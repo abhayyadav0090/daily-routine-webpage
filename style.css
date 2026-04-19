@@ -1,0 +1,287 @@
+/* ===========================
+   RESET & ROOT VARIABLES
+=========================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --morning-color: #f59e0b;
+  --morning-bg: #fffbeb;
+  --morning-border: #fcd34d;
+
+  --afternoon-color: #3b82f6;
+  --afternoon-bg: #eff6ff;
+  --afternoon-border: #93c5fd;
+
+  --evening-color: #8b5cf6;
+  --evening-bg: #f5f3ff;
+  --evening-border: #c4b5fd;
+
+  --night-color: #1e3a5f;
+  --night-bg: #e8edf5;
+  --night-border: #93afd4;
+
+  --page-bg: #f0f4f8;
+  --text-dark: #1a202c;
+  --text-muted: #64748b;
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+
+/* ===========================
+   BODY & PAGE
+=========================== */
+body {
+  font-family: var(--font-body);
+  background-color: var(--page-bg);
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(251, 191, 36, 0.07) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.07) 0%, transparent 50%);
+  color: var(--text-dark);
+  min-height: 100vh;
+  padding-bottom: 60px;
+}
+
+/* ===========================
+   HEADER
+=========================== */
+header {
+  text-align: center;
+  padding: 60px 20px 40px;
+}
+
+header .subtitle {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 300;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+}
+
+header h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  color: var(--text-dark);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+header .date {
+  margin-top: 12px;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+/* ===========================
+   TIMELINE CONTAINER
+=========================== */
+.timeline {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 20px 24px;
+  position: relative;
+}
+
+/* Vertical line running through center */
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 50px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, #fcd34d, #93c5fd, #c4b5fd, #93afd4);
+  border-radius: 2px;
+  opacity: 0.4;
+}
+
+/* ===========================
+   TIMELINE BLOCK (wrapper)
+=========================== */
+.block {
+  display: flex;
+  align-items: flex-start;
+  gap: 22px;
+  margin-bottom: 28px;
+  position: relative;
+  animation: fadeSlideIn 0.5s ease both;
+}
+
+.block:nth-child(1) { animation-delay: 0.05s; }
+.block:nth-child(2) { animation-delay: 0.1s; }
+.block:nth-child(3) { animation-delay: 0.15s; }
+.block:nth-child(4) { animation-delay: 0.2s; }
+.block:nth-child(5) { animation-delay: 0.25s; }
+.block:nth-child(6) { animation-delay: 0.3s; }
+.block:nth-child(7) { animation-delay: 0.35s; }
+.block:nth-child(8) { animation-delay: 0.4s; }
+
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateX(-18px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ===========================
+   TIME BADGE (left column)
+=========================== */
+.time-badge {
+  min-width: 80px;
+  text-align: right;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  padding-top: 18px;
+  flex-shrink: 0;
+}
+
+/* ===========================
+   CARD (right column)
+=========================== */
+.card {
+  flex: 1;
+  border-radius: 16px;
+  padding: 20px 22px;
+  border-left: 4px solid transparent;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  opacity: 0.06;
+  transform: translate(20px, -20px);
+}
+
+.card .icon {
+  font-size: 1.6rem;
+  margin-bottom: 8px;
+  line-height: 1;
+}
+
+.card h2 {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+
+.card p {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  font-weight: 300;
+  margin-bottom: 12px;
+}
+
+.tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 20px;
+  background: rgba(0,0,0,0.06);
+  color: var(--text-muted);
+}
+
+/* ===========================
+   HOVER EFFECT ON CARDS
+=========================== */
+.card:hover {
+  transform: translateY(-4px) translateX(3px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* ===========================
+   MORNING THEME
+=========================== */
+.morning .card {
+  background-color: var(--morning-bg);
+  border-left-color: var(--morning-color);
+}
+.morning .card::before { background: var(--morning-color); }
+.morning .card h2 { color: #92400e; }
+.morning .time-badge { color: var(--morning-color); font-weight: 600; }
+
+/* ===========================
+   AFTERNOON THEME
+=========================== */
+.afternoon .card {
+  background-color: var(--afternoon-bg);
+  border-left-color: var(--afternoon-color);
+}
+.afternoon .card::before { background: var(--afternoon-color); }
+.afternoon .card h2 { color: #1e40af; }
+.afternoon .time-badge { color: var(--afternoon-color); font-weight: 600; }
+
+/* ===========================
+   EVENING THEME
+=========================== */
+.evening .card {
+  background-color: var(--evening-bg);
+  border-left-color: var(--evening-color);
+}
+.evening .card::before { background: var(--evening-color); }
+.evening .card h2 { color: #5b21b6; }
+.evening .time-badge { color: var(--evening-color); font-weight: 600; }
+
+/* ===========================
+   NIGHT THEME
+=========================== */
+.night .card {
+  background-color: var(--night-bg);
+  border-left-color: var(--night-color);
+}
+.night .card::before { background: var(--night-color); }
+.night .card h2 { color: var(--night-color); }
+.night .time-badge { color: var(--night-color); font-weight: 600; }
+
+/* ===========================
+   ACTIVE / CURRENT BLOCK
+=========================== */
+.block.active .card {
+  background: linear-gradient(135deg, #dbeafe, #ede9fe);
+  border-left-color: var(--afternoon-color);
+  box-shadow: 0 6px 24px rgba(59, 130, 246, 0.18);
+}
+
+.block.active .card h2 {
+  color: #1e3a8a;
+}
+
+.current-tag {
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6) !important;
+  color: white !important;
+  font-weight: 600 !important;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.85; transform: scale(1.03); }
+}
+
+/* ===========================
+   FOOTER
+=========================== */
+footer {
+  text-align: center;
+  padding: 30px 20px 10px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 300;
+  letter-spacing: 0.05em;
+}
